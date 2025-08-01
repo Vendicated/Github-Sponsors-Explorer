@@ -1,6 +1,16 @@
 # GitHub Sponsors Explorer
 
-Work In Progress 🚧
+> [!IMPORTANT]  
+> This is an extremely early Work In Progress 🚧
+>
+> (I haven't even added any styling yet and most features aren't implemented yet)
+
+A Visualizer for GitHub sponsor statistics. Upload your all time data and explore it with tables, charts, etc
+
+<img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/40587b98-f674-4a70-bf37-83522f8fc59a" />
+
+<img width="1180" height="1087" alt="image" src="https://github.com/user-attachments/assets/f872c14e-fd78-4b24-94eb-fc04cde6a267" />
+
 
 # Svelte + TS + Vite
 
