@@ -1,9 +1,14 @@
 <script lang="ts">
     import { sponsors as sponsorsState } from "../appState.svelte";
     import { formatDate } from "../parser";
-    import { alpha3ToEmoji } from "../utils/countries";
+    import { alpha3ToCountryName, alpha3ToEmoji } from "../utils/countries";
     import { debounce } from "../utils/debounce";
-    import SortableTable from "./SortableTable.svelte";
+    import FlagWithTooltip, {
+        type FlagWithTooltipProps,
+    } from "./FlagWithTooltip.svelte";
+    import SortableTable, {
+        type SortableTableProps,
+    } from "./SortableTable.svelte";
 
     type SortBy = "country" | "username" | "date" | "total";
 
@@ -60,9 +65,12 @@
         ["Total Amount ($)", "total"],
     ] as [string, SortBy][];
 
-    const rows = $derived(
+    const rows = $derived<SortableTableProps<FlagWithTooltipProps>["rows"]>(
         sortedSponsors.map((sponsor) => [
-            alpha3ToEmoji(sponsor.country),
+            {
+                component: FlagWithTooltip,
+                props: { countryAlpha3: sponsor.country },
+            },
             sponsor.username,
             formatDate(sponsor.firstSponsorshipDate),
             (sponsor.totalSponsorshipAmountInCents / 100).toFixed(2),

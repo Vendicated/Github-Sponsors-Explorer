@@ -33,3 +33,7 @@ export function countryNameToAlpha3(name: string) {
         }
     }
 }
+
+export function alpha3ToCountryName(alpha3: string): string | undefined {
+    return Countries[alpha3]?.name;
+}

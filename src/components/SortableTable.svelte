@@ -1,7 +1,9 @@
 <script lang="ts">
-    interface Props {
+    import type { Component } from "svelte";
+
+    export interface SortableTableProps<T extends Record<string, any>> {
         headers: [string, string][];
-        rows: string[][];
+        rows: (string | { component: Component<T>; props: T })[][];
         sortValue: string;
         onChangeSortValue: (sortName: string) => void;
         initialSortOrder?: "asc" | "desc";
@@ -13,7 +15,7 @@
         sortValue,
         onChangeSortValue: onChangeSort,
         initialSortOrder = "asc",
-    }: Props = $props();
+    }: SortableTableProps<any> = $props();
 
     let sortOrder = $state(initialSortOrder);
 
@@ -49,7 +51,13 @@
         {#each orderedRows.slice(0, 50) as row}
             <tr>
                 {#each row as cell}
-                    <td>{cell}</td>
+                    <td>
+                        {#if typeof cell === "string"}
+                            {cell}
+                        {:else}
+                            <cell.component {...cell.props} />
+                        {/if}
+                    </td>
                 {/each}
             </tr>
         {/each}
@@ -60,15 +68,15 @@
     table {
         min-width: 100%;
         border-collapse: collapse;
-        border: 2px solid black;
+        border: 2px solid var(--fg);
         font-size: 1.5rem;
     }
 
     thead {
         position: sticky;
         top: 0;
-        background-color: white;
-        border-bottom: 2px solid black;
+        background-color: var(--bg);
+        border-bottom: 2px solid var(--fg);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         z-index: 1;
     }
@@ -76,7 +84,7 @@
     th,
     td {
         text-align: center;
-        border: 1px solid black;
+        border: 1px solid var(--fg);
         padding: 0.8em 1em;
     }
 
