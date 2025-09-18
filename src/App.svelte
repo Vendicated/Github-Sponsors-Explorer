@@ -1,4 +1,6 @@
 <script lang="ts">
+    import "./app.css";
+
     import FilePicker from "./components/FilePicker.svelte";
     import { sponsors } from "./appState.svelte";
     import TabBar from "./components/TabBar.svelte";

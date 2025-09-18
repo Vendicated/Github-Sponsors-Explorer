@@ -67,11 +67,6 @@
         }
     }
 
-    label.current {
-        background-color: var(--accent);
-        color: var(--bg2);
-    }
-
     input {
         display: none;
     }

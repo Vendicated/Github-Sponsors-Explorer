@@ -1,0 +1,18 @@
+body {
+    font-family: system-ui, sans-serif;
+
+    --bg: white;
+    --fg: black;
+
+    color: var(--fg);
+    background: var(--bg);
+    color-scheme: light;
+}
+
+@media(prefers-color-scheme: dark) {
+    body {
+        --bg: #222;
+        --fg: #eee;
+        color-scheme: dark;
+    }
+}
