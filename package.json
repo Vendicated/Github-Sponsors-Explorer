@@ -14,7 +14,7 @@
         "@sveltejs/vite-plugin-svelte": "^6.0.0",
         "@tsconfig/svelte": "^5.0.4",
         "@types/wicg-file-system-access": "^2023.10.6",
-        "svelte": "^5.35.5",
+        "svelte": "^5.51.5",
         "svelte-check": "^4.2.2",
         "typescript": "~5.9.2",
         "vite": "^7.0.4",
